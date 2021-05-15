@@ -1,0 +1,34 @@
+.select-container lable {
+  display: block;
+  color: #5b34db;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.select-container select {
+  margin: 0;
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  border: 0 solid #000;
+  transition: background-color .2s;
+  height: 40px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  background-color: #f2f3f7;
+  transition: background-color .2s,box-shadow .2s;
+}
+
+.select-container select:focus {
+  border: 0px;
+  outline: 0px;
+  background-color: #fff;
+  box-shadow: 4px 4px 15px 0 rgb(0 0 0 / 20%);
+  color: #000;
+}

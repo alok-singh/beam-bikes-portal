@@ -1,0 +1,19 @@
+.custom-button {
+  display: block;
+  margin: 40px auto auto;
+  padding: 18px 60px;
+  border-radius: 6px;
+  background-color: #744aff;
+  text-align: center;
+  border: 0px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.custom-button:focus{
+  border: 0px;
+  outline: 0px;
+}

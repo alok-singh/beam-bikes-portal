@@ -1,13 +1,105 @@
+@font-face {
+  font-family: 'Avertastd';
+  src: url('https://uploads-ssl.webflow.com/5b685812f109cf81a7d99e25/5c9c78f3d88d005d35f0b740_AvertaStd-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'Avertastd';
+  src: url('https://uploads-ssl.webflow.com/5b685812f109cf81a7d99e25/5c9c78f36cf09635709e86fc_AvertaStd-ExtraboldItalic.otf') format('opentype'), url('https://uploads-ssl.webflow.com/5b685812f109cf81a7d99e25/5c9c78f3caf3b62503343a2b_AvertaStd-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'Avertastd';
+  src: url('https://uploads-ssl.webflow.com/5b685812f109cf81a7d99e25/5c9c78f3edb2e760feb9fca6_AvertaStd-SemiboldItalic.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'Avertastd';
+  src: url('https://uploads-ssl.webflow.com/5b685812f109cf81a7d99e25/5c9c78f3d88d007383f0b741_AvertaStd-BlackItalic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'Avertastd';
+  src: url('https://uploads-ssl.webflow.com/5b685812f109cf81a7d99e25/5c9c78f3e3044dd7c5561627_AvertaStd-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'Avertastd';
+  src: url('https://uploads-ssl.webflow.com/5b685812f109cf81a7d99e25/5c9c78f36cf0969cb19e86fd_AvertaStd-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'Avertastd';
+  src: url('https://uploads-ssl.webflow.com/5b685812f109cf81a7d99e25/5c9c78f3e3044d5fab561628_AvertaStd-ExtrathinItalic.otf') format('opentype'), url('https://uploads-ssl.webflow.com/5b685812f109cf81a7d99e25/5c9c78f3edb2e73064b9fcb2_AvertaStd-ThinItalic.otf') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'Avertastd';
+  src: url('https://uploads-ssl.webflow.com/5b685812f109cf81a7d99e25/5c9c78f36cf096498c9e86ff_AvertaStd-Extrabold.otf') format('opentype'), url('https://uploads-ssl.webflow.com/5b685812f109cf81a7d99e25/5c9c78f3caf3b611d7343a2a_AvertaStd-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'Avertastd';
+  src: url('https://uploads-ssl.webflow.com/5b685812f109cf81a7d99e25/5c9c78f3e3044d8538561629_AvertaStd-Thin.otf') format('opentype'), url('https://uploads-ssl.webflow.com/5b685812f109cf81a7d99e25/5c9c78f36cf09617e69e8700_AvertaStd-Extrathin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'Avertastd';
+  src: url('https://uploads-ssl.webflow.com/5b685812f109cf81a7d99e25/5c9c78f3202d437d071280ce_AvertaStd-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'Avertastd';
+  src: url('https://uploads-ssl.webflow.com/5b685812f109cf81a7d99e25/5c9c78f3e3044d071556162a_AvertaStd-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: auto;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  min-height: 100vh;
+  background-color: #eaeaea;
+  font-family: 'Avertastd', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  background: linear-gradient(180deg , #0d004e, #151224);
 }
