@@ -1,14 +1,27 @@
+/* 
+  Bikes finder Container
+  This contains full logic of rending the 
+  bike finder page
+*/
+
+// Libraries
 import React, { useState } from 'react';
+
+// Components
 import Map from '../../components/map';
 import Input from '../../components/input';
 import Button from '../../components/button';
 import Select from '../../components/select';
 import LoadingIndicator from '../../components/loader';
 
+// Utils
 import { fetchBikes } from '../../utils/request';
-import { latitudeMatch, longitudeMatch } from '../../utils/textMatch';
+import { latitudeMatch, longitudeMatch, decimalMatch } from '../../utils/textMatch';
+
+// Config
 import { config } from '../../config/vars';
 
+// Stylesheets
 import './styles.css';
 
 const BikeFinder = () => {
@@ -17,8 +30,9 @@ const BikeFinder = () => {
   const [longitude, setLongitude] = useState();
   const [bikes, setBikes] = useState([]);
   const [selectPlace, setSelectPlace] = useState('');
-  const [distance, setDistance] = useState(50);
-  const [limit, setLimit] = useState(10);
+  const [distance, setDistance] = useState('50');
+  const [limit, setLimit] = useState('10');
+  const mapId = 'bikes-map';
 
   const onChangeLatitude = (value) => {
     setLatitude(value);
@@ -36,9 +50,18 @@ const BikeFinder = () => {
     setSelectPlace(value); 
   };
 
+  const scrollToMap = () => {
+    try {
+      const mapPosition = document.querySelector(`#${mapId}`).offsetTop;
+      document.documentElement.scrollTop = mapPosition - 20;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const onClickSubmit = async () => {
     try {
-      if(limit && distance) {
+      if(limit && distance && decimalMatch(limit) && decimalMatch(distance)) {
         if(latitude && longitude && latitudeMatch(latitude) && longitudeMatch(longitude)) {
           setIsLoading(true);
           const data = await fetchBikes(latitude, longitude, distance, limit);
@@ -46,6 +69,8 @@ const BikeFinder = () => {
           setIsLoading(false);
           if(data.response && data.response.length === 0) {
             alert('No bikes found');
+          } else {
+            scrollToMap();
           }
         } else if(selectPlace !== '' && typeof selectPlace !== "undefined") {
           setIsLoading(true);
@@ -56,6 +81,8 @@ const BikeFinder = () => {
           setIsLoading(false);
           if(data.response && data.response.length === 0) {
             alert('No bikes found');
+          } else {
+            scrollToMap();
           }
         } else {
           alert('Inputs are not correct');
@@ -78,7 +105,7 @@ const BikeFinder = () => {
           Select from list or Input latitude and longitude and click on submit
         </h2>
         <Select lable="Location" optionList={config.LOCATION_LIST} value={selectPlace} onChange={(value) => onChangeSelect(value)} />
-        <h2>OR</h2>
+        <h2 class="divider-text">OR</h2>
         <Input type="text" lable="Latitude" placeholder="eg. 1.3690926" value={latitude} onChange={({target}) => onChangeLatitude(target.value)} />
         <Input type="text" lable="Longitude" placeholder="eg. 103.8164342" value={longitude} onChange={({target}) => onChangeLongitude(target.value)} />
         <div className="line-break" />
@@ -86,7 +113,7 @@ const BikeFinder = () => {
         <Input type="text" lable="Limit" placeholder="eg. 50" value={limit} onChange={({target}) => setLimit(target.value)} />
         <Button text="submit" onClick={onClickSubmit} />
       </div>
-      {bikes.length ? <Map bikes={bikes} centerLatitude={latitude} centerLongitude={longitude} /> : isLoading ? <LoadingIndicator /> : null}
+      {bikes.length ? <Map mapId={mapId} bikes={bikes} centerLatitude={latitude} centerLongitude={longitude} /> : isLoading ? <LoadingIndicator /> : null}
     </div>
   );
 }

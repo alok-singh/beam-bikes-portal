@@ -1,3 +1,9 @@
+/* 
+  Loading indicator Component
+  No need to use memoization 
+  as it doesn't have any props
+*/
+
 import React from 'react';
 import './styles.css';
 

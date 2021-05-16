@@ -29,3 +29,11 @@
   border-style: dashed;
   border: 1px dashed #744bff45;
 }
+
+.form-container .divider-text {
+  color: #5b34db;
+  text-align: center;
+  font-size: 20px;
+  line-height: 34px;
+  font-weight: 600;
+}

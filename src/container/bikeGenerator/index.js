@@ -1,11 +1,22 @@
+/* 
+  Bikes generator Container
+  This contains full logic of rending the 
+  bike generator page
+*/
+
+// Libraries
 import React, { useState } from 'react';
+
+// Components
 import Input from '../../components/input';
 import Button from '../../components/button';
 import LoadingIndicator from '../../components/loader';
 
+// Utils
 import { generateBikes } from '../../utils/request';
 import { latitudeMatch, longitudeMatch } from '../../utils/textMatch';
 
+// Stylesheets
 import './styles.css';
 
 const BikeGenerator = () => {
@@ -20,6 +31,7 @@ const BikeGenerator = () => {
     setIsLoading(true);
     try {
       if(minLatitude && !latitudeMatch(minLatitude)) {
+        // TODO: replace alerts with some better popup
         alert('minLatitude is not correct');
         return;
       }
@@ -35,7 +47,7 @@ const BikeGenerator = () => {
         alert('maxLongitude is not correct');
         return;
       }
-      alert('Without input, bikes will be generated with default values minLatitude = 1.30, maxLatitude = 1.36, minLongitude = 103.65, maxLongitude = 103.99, limit = 1000');
+      alert(`Warning: Without input, bikes will be generated with default values minLatitude = ${minLatitude || 1.30}, maxLatitude = ${maxLatitude || 1.36}, minLongitude = ${minLongitude || 103.65}, maxLongitude = ${maxLongitude || 103.99}, numberOfBikes = ${numberOfBikes || 1000}`);
       await generateBikes(minLatitude, maxLatitude, minLongitude, maxLongitude, numberOfBikes);
       setIsLoading(false);
       alert('Bikes generated');

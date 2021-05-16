@@ -1,4 +1,11 @@
-import React from 'react';
+/* 
+  Select Component
+  
+  All common configuration related to select
+  has to be done in this file
+*/
+
+import React, { memo } from 'react';
 import './styles.css';
 
 const Select = (props) => {
@@ -12,8 +19,8 @@ const Select = (props) => {
           return <option value={index} selected={value === index} >{option.name}</option>
         })}
       </select>
-     </div>
+    </div>
   )
 }
 
-export default Select;
+export default memo(Select);

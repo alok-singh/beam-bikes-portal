@@ -1,4 +1,11 @@
-import React from 'react';
+/* 
+  Input Component
+  
+  All common configuration related to input box
+  has to be done in this file
+*/
+
+import React, { memo } from 'react';
 import './styles.css';
 
 const Input = (props) => {
@@ -10,4 +17,4 @@ const Input = (props) => {
   )
 }
 
-export default Input;
+export default memo(Input);

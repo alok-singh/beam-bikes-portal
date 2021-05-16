@@ -1,25 +1,86 @@
+/**
+ * All API calls are through this util
+ */
+
 import { config } from '../config/vars';
 
-export const generateBikes = (minLatitude = 1.30, maxLatitude = 1.36, minLongitude = 103.65, maxLongitude = 103.99, limit = 1000) => {
-  const query = {minLatitude, maxLatitude, minLongitude, maxLongitude, limit};
-  const queryString = Object.keys(query).reduce((acc, item, index) => {
-    if(query[item]) {
-      acc = `${acc}${index === 0 ? `` : `&`}${item}=${query[item]}`;
+const { defaultApiValues, BASE_URL } = config;
+const { 
+  MIN_LATITUDE,
+  MAX_LATITUDE,
+  MIN_LONGITUDE,
+  MAX_LONGITUDE,
+  GENERATE_BIKES_LIMIT,
+  SEARCH_LATITUDE,
+  SEARCH_LONGITUDE,
+  SEARCH_DISTANCE,
+  SEARCH_BIKES_LIMIT,
+} = defaultApiValues;
+
+/**
+ * 
+ * @param {Object} params 
+ * @returns {String}
+ */
+const generateQueryString = (params) => {
+  return Object.keys(params).reduce((acc, item, index) => {
+    if(params[item]) {
+      acc = `${acc}${index === 0 ? `` : `&`}${item}=${params[item]}`;
     }
     return acc;
   }, '');
-  const requestUrl = `${config.BASE_URL}/v1/generate-bikes?${queryString}`;
+}
+
+/**
+ * Function to generate the API 
+ * route to generate bikes
+ * @param {Number} minLatitude 
+ * @param {Number} maxLatitude 
+ * @param {Number} minLongitude 
+ * @param {Number} maxLongitude 
+ * @param {Number} limit 
+ * @returns {String}
+ */
+export const generateBikes = (
+  minLatitude = MIN_LATITUDE, 
+  maxLatitude = MAX_LATITUDE, 
+  minLongitude = MIN_LONGITUDE, 
+  maxLongitude = MAX_LONGITUDE, 
+  limit = GENERATE_BIKES_LIMIT
+) => {
+  const query = {minLatitude, maxLatitude, minLongitude, maxLongitude, limit};
+  const queryString = generateQueryString(query);
+  const requestUrl = `${BASE_URL}/v1/generate-bikes?${queryString}`;
   return request(requestUrl);
 }
 
-export const fetchBikes = (latitude = 1.3690926, longitude = 103.8164342, distance = 50, limit = 10) => {
-  const requestUrl = `${config.BASE_URL}/v1/bikes?lat=${latitude}&lng=${longitude}&distance=${distance}&limit=${limit}`;
-  // const requestUrl = `${config.BASE_URL}/v1/bikes?limit=10000`;
+/**
+ * Function to generate the API
+ * route to get bikes with params
+ * @param {Number} latitude
+ * @param {Number} longitude
+ * @param {Number} distance
+ * @param {Number} limit
+ * @returns {String}
+ */
+export const fetchBikes = (
+  lat = SEARCH_LATITUDE, 
+  lng = SEARCH_LONGITUDE, 
+  distance = SEARCH_DISTANCE, 
+  limit = SEARCH_BIKES_LIMIT
+) => {
+  const query = { lat, lng, distance, limit };
+  const queryString = generateQueryString(query);
+  const requestUrl = `${BASE_URL}/v1/bikes?${queryString}`;
   return request(requestUrl);
-  
 };
 
-
+/**
+ * Function to make API call 
+ * with provided URL
+ * @param {String} url 
+ * @returns {Object}
+ */
 export const request = async (url) => {
   return (await fetch(url)).json();
 };

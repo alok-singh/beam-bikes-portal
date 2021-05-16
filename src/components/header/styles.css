@@ -2,13 +2,14 @@
   background: #744aff;
   position: sticky;
   top: 0px;
+  z-index: 999;
 }
 
 .header-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  max-width: 1280px;
+  max-width: 940px;
   padding: 30px 0px;
   margin: auto;
 }
@@ -21,7 +22,7 @@
 .header-container .logo-image {
   width: 100px;
   height: 100px;
-  transform: translate(-150%, -15%);
+  transform: translate(0px, -15px);
 }
 
 .header-container .header-navigation .header-link {
