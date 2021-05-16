@@ -1,24 +1,34 @@
-# Getting Started with Create React App
-
+# Getting Started with bikes portal
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## Steps to test
+```bash
+git clone https://github.com/alok-singh/beam-bikes-portal.git
+```
+```bash
+cd path/to/project/directory
+```
+```bash
+yarn install
+```
+```bash
+yarn start
+```
+Make sure that API server is running locally on port 3000 which is mentioned [here](https://github.com/alok-singh/beam-bikes-server).
 
-### `yarn start`
+Following routes are available once the server is started
 
-Runs the app in the development mode.\
-Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
+This page can be used to generate bikes with given parameters
+```bash
+http://localhost:3001/bike-generator
+```
 
-
-## Go to localhost:3001
-## Available Routes
-
-### `http://localhost:3001/bike-generator`
-Using this page random bikes can be generate bikes with given parameter 
-### `http://localhost:3001/bike-finder`
 Using this page bikes can be searched and plotted on the graph
+```bash
+http://localhost:3001/bike-finder
+```
+
 
 
 
