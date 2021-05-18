@@ -61,7 +61,7 @@ const Map = (props) => {
     // click event listener for center marker
     google.maps.event.addListener(centerMarker, 'click', ((marker)  => {
       return () => {
-        infowindow.setContent(`Search Location lat: ${center[0]}, lng: ${center[1]}`);
+        infowindow.setContent(`Search Location lat: ${center.latitude}, lng: ${center.longitude}`);
         infowindow.open(map, marker);
       }
     })(centerMarker));
@@ -79,7 +79,7 @@ const Map = (props) => {
       // Following code ads click event listener to the marker inserted
       google.maps.event.addListener(marker, 'click', ((marker, index)  => {
         return () => {
-          infowindow.setContent(locations[index][0]);
+          infowindow.setContent(locations[index].lable);
           infowindow.open(map, marker);
         }
       })(marker, index));
